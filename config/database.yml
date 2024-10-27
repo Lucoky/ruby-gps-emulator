@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: dev
+  password: gps123
+  host: localhost
+
+development:
+  <<: *default
+  database: psqldb_gps_emulator_development
+
+test:
+  <<: *default
+  database: psqldb_gps_emulator_test
+
+production:
+  <<: *default
+  database: psqldb_gps_emulator_production
