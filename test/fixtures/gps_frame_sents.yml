@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gps: one
+  data: MyString
+  sent_at: 2024-10-27 19:04:43
+
+two:
+  gps: two
+  data: MyString
+  sent_at: 2024-10-27 19:04:43
