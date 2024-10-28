@@ -1,0 +1,5 @@
+﻿:scheduler:
+  :schedule:
+    enqueue_routes_to_generate:
+      every: '30s'
+      class: 'EnqueueRoutesToGenerate'

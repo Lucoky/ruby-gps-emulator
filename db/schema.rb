@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_28_011321) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_04_043800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,5 +34,26 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_28_011321) do
     t.index ["gps_id"], name: "index_gps_frame_sents_on_gps_id"
   end
 
+  create_table "route_positions", force: :cascade do |t|
+    t.bigint "route_id", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "position_date"
+    t.string "position_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_route_positions_on_route_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.bigint "gps_id", null: false
+    t.boolean "emulated"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gps_id"], name: "index_routes_on_gps_id"
+  end
+
   add_foreign_key "gps_frame_sents", "gps", column: "gps_id"
+  add_foreign_key "route_positions", "routes"
+  add_foreign_key "routes", "gps", column: "gps_id"
 end
